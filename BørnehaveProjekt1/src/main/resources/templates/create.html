@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:display="http://www.w3.org/1999/xhtml" xmlns:>
+<head>
+
+    <title>Opret</title>
+
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link rel="stylesheet" type="text/css" th:href="Styles2.css">
+
+</head>
+
+
+<body>
+<div class="container">
+
+    <h1 style="padding: 0px 20px"> Opret nyt barn</h1>
+
+    <form method="Post" th:action="@{/create}" th:object="${child}">
+
+        <div class="form-group">
+        <label>  Indtast barnets navn</label> <br/>
+        <input type="text" required th:field="*{forNavn}"/>
+        </div>
+
+        <div class="form-group">
+        <label>Indtast barnets efternavn</label> <br/>
+        <input type="text" required th:field="*{efterNavn}"/>
+        </div>
+
+        <div class="form-group">
+        <label>Indtast kontaktperson</label><br/>
+        <input type="text" th:field="*{kontaktPerson}"/>
+        </div>
+
+        <div class="form-group">
+        <label>Indtast cpr</label><br/>
+        <input type="text" th:field="*{cpr}"/>
+        </div>
+
+        <div class="form-group">
+        <label>Indtast start dato</label><br/>
+        <input type="date" th:field="*{startDato}"/>
+        </div>
+
+        <div class="form-group">
+        <label>Indtast eventuelt en note</label><br/>
+        <input type="text" th:field="*{noter}"/>
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Opret "/>
+
+    </form>
+
+</div>
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+</body>
+</html>

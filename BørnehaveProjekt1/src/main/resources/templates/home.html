@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hjem</title>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <div th:replace="header :: header-css"/>
+
+
+</head>
+
+
+<body>
+<div th:replace="header :: header"/>
+<div class="container">
+
+    <h1>Telefonliste</h1>
+
+
+    <div></div>
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Kontakt Person (tlf.)</th>
+            <th>Cpr</th>
+            <th>Start Dato</th>
+            <th>Noter</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="child: ${children}">
+
+            <td th:text="${child.forNavn}"/>
+            <td th:text="${child.efterNavn}"/>
+            <td th:text="${child.kontaktPerson}"/>
+            <td th:text="${child.cpr}"/>
+            <td th:text="${child.startDato}"/>
+            <td th:text="${child.noter}"/>
+            <td>
+
+                <a class="glyphicon glyphicon-remove" th:href="${'delete/' + child.id}">
+                    <!--<button class="btn btn-danger glyphicon glyphicon-remove">delete</button>-->
+                </a>
+                <a class="glyphicon glyphicon-pencil" th:href="${'edit/' + child.id}">
+                    <!--<button class="btn btn-warning glyphicon glyphicon-pencil">edit</button>-->
+                </a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+        <a href="/create">
+            <button class="btn tn-lg btn-primary">Opret nyt child </button>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
