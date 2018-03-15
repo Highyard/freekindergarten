@@ -5,6 +5,4 @@ import java.util.ArrayList;
 public interface UserService {
 
     ArrayList<Child> fetchAllChildren();
-
-
 }

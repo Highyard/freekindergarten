@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class Child implements Serializable {
+public class Child implements Serializable  {
 
     private int id;
     private String forNavn;
@@ -20,7 +20,6 @@ public class Child implements Serializable {
     public Child(){
     }
 
-
     public Child(int id, String forNavn, String efterNavn, String kontaktPerson, String cpr, Date startDato, String noter) {
         this.id = id;
         this.forNavn = forNavn;
@@ -33,14 +32,7 @@ public class Child implements Serializable {
 
     @Override
     public String toString() {
-        return "Child{" +
-                "forNavn='" + forNavn + '\'' +
-                ", efterNavn='" + efterNavn + '\'' +
-                ", kontaktPerson='" + kontaktPerson + '\'' +
-                ", cpr='" + cpr + '\'' +
-                ", startDato=" + startDato +
-                ", noter='" + noter + '\'' +
-                '}';
+        return "navn" + forNavn;
     }
 
 

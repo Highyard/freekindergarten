@@ -1,59 +1,93 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:display="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8"/>
     <title>Rediger</title>
 
 
-    <link rel="stylesheet" type="text/css" th:href="@{Styles.css}"/>
-    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link rel="stylesheet" type="text/css" th:href="Styles2.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 
     <style>
-        input[type=text] {
-            width: 50%;
+
+        input[type=text], input[type=date]{
+            width: 400px;
             padding: 12px 20px;
-            margin: 8px 0;
+            margin: 0px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
             box-sizing: border-box;
         }
+
+        body {
+            background-color: #EAF1EE;
+        }
+
     </style>
 
 
 </head>
+
 <body>
-
 <div class="container">
-    <h1>Rediger børne oplysninger</h1>
-    <form method="Post" th:action="@{/edit}" >
-        <!-- <p>Enter student id</p>
-         <input   type="number" name="ID" th:field="${student.studentID}"  />-->
-        <p>Enter first name</p>
-        <input type="text" size="60" th:field="${child.forNavn}"/>
-        <p>Enter last name</p>
-        <input type="text" size="60" th:field="${child.efterNavn}"/>
-        <p>Enter enrollementdate</p>
-        <input type="text" size="60" th:field="${child.kontaktPerson}"/>
-        <p>Enter cpr</p>
-        <input type="text" size="60" th:field="${child.cpr}"/>
-        <p>Enter cpr</p>
-        <input type="date" size="60" th:field="${child.startDato}"/>
-        <p>Enter cpr</p>
-        <input type="text" size="60" th:field="${child.noter}"/>
 
-        <div>
-            <input class="btn btn-primary" type="submit" value="Send"/>
+    <div class="d-flex justify-content-center">
+
+        <div class="p-1">
+
+            <div class="col-auto">
+
+            <h1> Rediger børne oplysninger</h1>
+
+
+    <form method="Post" th:action="@{/edit}">
+
+        <div class="form-group">
+        <label>Ændre fornavn</label> <br>
+        <input type="text"  th:field="${child.forNavn}"/>
         </div>
+
+        <div class="form-group">
+        <label>Ændre efternavn</label> <br>
+        <input type="text"  th:field="${child.efterNavn}"/>
+        </div>
+
+        <div class="form-group">
+        <label>Ændre kontaktperson</label> <br>
+        <textarea style= "height: 150px; width: 400px" th:field="${child.kontaktPerson}"/>
+        </div>
+
+        <div class="form-group">
+        <label>Ændre CPR</label> <br>
+        <input type="text"  th:field="${child.cpr}"/>
+        </div>
+
+        <div class="form-group">
+        <label>Ændre startdato</label> <br>
+        <input type="date"  th:field="${child.startDato}"/>
+        </div>
+
+        <div class="form-group">
+        <label>Ændre noter</label> <br>
+        <textarea style= "height: 150px; width: 400px"  th:field="${child.noter}"/>
+        </div>
+
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="Rediger"/>
+        </div>
+
     </form>
 
+
+            </div>
+        </div>
+    </div>
 </div>
 
 
 
-
-
-
-
-
-
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+
 </body>
 </html>

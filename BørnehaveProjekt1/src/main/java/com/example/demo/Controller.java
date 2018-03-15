@@ -31,7 +31,6 @@ public class Controller {
 
     @RequestMapping(value = {"/login"}, method = RequestMethod.POST)
     public String login(@ModelAttribute SystemUser user, Model model){
-        System.out.println(user.getUserName());
 
         user = systemUserService.getUser(user.getUserName(), user.getPassword());
         if (user != null){
@@ -41,7 +40,7 @@ public class Controller {
         model.addAttribute("error", true);
         model.addAttribute("logout", true);
 
-        return "redirect:/login";
+        return "/login";
     }
 
 
@@ -54,6 +53,9 @@ public class Controller {
     @GetMapping("/home")
     public String startside(Model model){
         log.info("Home action called");
+        WriterReader writerReader = new WriterReader();
+        ArrayList<Child> arrayList = writerReader.readObjectFromFile(WriterReader.filepath);
+
         model.addAttribute("children", userService.fetchAllChildren());
         log.info("Home action ended");
         return "home";
@@ -62,15 +64,23 @@ public class Controller {
     @GetMapping("/create")
     public String opret(Model model){
         log.info("create action called");
+
         model.addAttribute("child", new Child());
+
         return "/create";
     }
 
     @PostMapping("/create")
     public String opret(@ModelAttribute Child child){
+
         log.info("create post action called");
 
+        String index = Integer.toString(userService.fetchAllChildren().size());
+
+        child.setId(Integer.parseInt(index));
+
         userService.addBarn(child);
+
         return "redirect:/home";
     }
 
