@@ -1,7 +1,9 @@
-package com.example.demo;
+package com.example.demo.controller;
 
-
-
+import com.example.demo.model.Child;
+import com.example.demo.model.SystemUser;
+import com.example.demo.services.SystemUserServiceImpl;
+import com.example.demo.services.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +25,16 @@ public class Controller {
     UserServiceImpl userService;
 
 
+
+
     @RequestMapping(value = {"/", ""}, method = RequestMethod.GET)
     public String login(Model model){
         model.addAttribute("systemUser", new SystemUser());
         return "login";
     }
+
+
+
 
     @RequestMapping(value = {"/login"}, method = RequestMethod.POST)
     public String login(@ModelAttribute SystemUser user, Model model){
@@ -45,16 +52,9 @@ public class Controller {
 
 
 
-
-
-
-
-
     @GetMapping("/home")
     public String startside(Model model){
         log.info("Home action called");
-        WriterReader writerReader = new WriterReader();
-        ArrayList<Child> arrayList = writerReader.readObjectFromFile(WriterReader.filepath);
 
         model.addAttribute("children", userService.fetchAllChildren());
         log.info("Home action ended");
@@ -72,7 +72,6 @@ public class Controller {
 
     @PostMapping("/create")
     public String opret(@ModelAttribute Child child){
-
         log.info("create post action called");
 
         String index = Integer.toString(userService.fetchAllChildren().size());
@@ -95,6 +94,7 @@ public class Controller {
 
         model.addAttribute("children", userService.fetchAllChildren());
 
+
         return "delete";
     }
 
@@ -111,6 +111,11 @@ public class Controller {
         leftShiftId(userService.fetchAllChildren(), id);
 
         model.addAttribute("students", userService.fetchAllChildren());
+
+
+
+
+
 
         return "redirect:/home";
 
@@ -136,9 +141,6 @@ public class Controller {
 
 
         log.info("edit action called...");
-        //public String edit(@PathVariable ("ID") int id, Model model){
-        //this.id = id;
-        //this.model = model;
 
 
         model.addAttribute("child", userService.fetchAllChildren().get(id));
@@ -158,10 +160,13 @@ public class Controller {
 
         log.info("edit post action called...");
 
+        int id = child.getId();
+
 
         for (int i = 0; i < userService.fetchAllChildren().size(); i++) {
 
-            if (child.getId() == userService.fetchAllChildren().get(i).getId()) {
+            if (id == userService.fetchAllChildren().get(i).getId()) {
+
                 userService.fetchAllChildren().set(i, child);
                 //students.remove(i);
                 //students.add(i, student);
@@ -171,6 +176,7 @@ public class Controller {
 
 
         model.addAttribute("students", userService.fetchAllChildren());
+
         return "redirect:/home";
     }
 

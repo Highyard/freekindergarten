@@ -1,10 +1,10 @@
-package com.example.demo;
+package com.example.demo.services;
 
+import com.example.demo.model.SystemUser;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SystemUserService implements SystemUserServiceImpl {
-
 
 
     @Override

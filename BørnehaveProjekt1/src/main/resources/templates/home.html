@@ -15,7 +15,7 @@
 <div th:replace="header :: header"/>
 <div class="container">
 
-    <h1><u>Børne-telefonlisten</u></h1>
+    <h1><u>Telefonlist</u></h1>
 
 
     <div></div>
@@ -28,7 +28,7 @@
             <th>CPR</th>
             <th>Start dato</th>
             <th>Noter</th>
-            <th><i>Konfigurer</i></th>
+            <th><i>Konfigurer (slet/rediger)</i></th>
         </tr>
         </thead>
 
@@ -43,10 +43,10 @@
             <td th:text="${child.noter}"/>
             <td>
 
-                <a class="glyphicon glyphicon-remove" th:href="${'delete/' + child.id}">
+                <a class="btn btn-danger glyphicon glyphicon-remove"  th:href="${'delete/' + child.id}">
                     <!--<button class="btn btn-danger glyphicon glyphicon-remove">delete</button>-->
                 </a>
-                <a class="glyphicon glyphicon-pencil" th:href="${'edit/' + child.id}">
+                <a class="btn btn-warning glyphicon glyphicon-pencil" th:href="${'edit/' + child.id}">
                     <!--<button class="btn btn-warning glyphicon glyphicon-pencil">edit</button>-->
                 </a>
 
@@ -56,7 +56,7 @@
     </table>
     <div>
         <a href="/create">
-            <button class="btn tn-lg btn-primary">Opret nyt barn </button>
+            <button class="btn btn-success">Opret nyt barn </button>
         </a>
     </div>
 </div>

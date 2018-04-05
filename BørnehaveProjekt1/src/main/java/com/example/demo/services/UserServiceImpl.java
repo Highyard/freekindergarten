@@ -1,12 +1,11 @@
-package com.example.demo;
+package com.example.demo.services;
 
+import com.example.demo.model.Child;
+import com.example.demo.model.UserRepository;
+import com.example.demo.services.UserService;
 import org.springframework.stereotype.Service;
 
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -15,14 +14,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ArrayList<Child> fetchAllChildren() {
+
+        userRepository.readFromfile();
+
         return userRepository.fetchChildren();
     }
 
+
+
     public boolean addBarn(Child child){
-        userRepository.saveTofile();
-        return userRepository.children.add(child);
+
+        userRepository.children.add(child);
+
+        return  userRepository.saveTofile();
+
     }
-
-
 
 }

@@ -4,28 +4,17 @@
     <title>Rediger</title>
 
 
-    <link rel="stylesheet" type="text/css" th:href="Styles2.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{../Styles2.css}">
 
     <style>
-
-        input[type=text], input[type=date]{
-            width: 400px;
-            padding: 12px 20px;
-            margin: 0px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #EAF1EE;
-        }
-
+    div {
+    border-radius: 5px;
+    background-color: #ffffcc;
+    padding: 20px;
+    }
     </style>
-
 
 </head>
 
@@ -40,37 +29,36 @@
 
             <h1> Rediger børne oplysninger</h1>
 
-
     <form method="Post" th:action="@{/edit}">
 
         <div class="form-group">
-        <label>Ændre fornavn</label> <br>
-        <input type="text"  th:field="${child.forNavn}"/>
+            <label for="fornavn"> Ændre fornavn</label>
+            <input class="form-control" id="fornavn" type="text"  th:field="${child.forNavn}"/>
         </div>
 
         <div class="form-group">
-        <label>Ændre efternavn</label> <br>
-        <input type="text"  th:field="${child.efterNavn}"/>
+            <label for="efternavn"> Ændre efternavn</label>
+            <input class="form-control" id="efternavn" type="text"  th:field="${child.efterNavn}"/>
         </div>
 
         <div class="form-group">
-        <label>Ændre kontaktperson</label> <br>
-        <textarea style= "height: 150px; width: 400px" th:field="${child.kontaktPerson}"/>
+            <label for="kontaktPerson">Ændre kontaktperson</label>
+            <textarea class="form-control" id="kontaktPerson" style= "height: 150px; width: 500px" th:field="${child.kontaktPerson}"/>
         </div>
 
         <div class="form-group">
-        <label>Ændre CPR</label> <br>
-        <input type="text"  th:field="${child.cpr}"/>
+            <label for="CPR">Ændre CPR</label>
+            <input class="form-control" id="CPR" type="text"  th:field="${child.cpr}"/>
         </div>
 
         <div class="form-group">
-        <label>Ændre startdato</label> <br>
-        <input type="date"  th:field="${child.startDato}"/>
+            <label for="startdato">Ændre startdato</label>
+            <input class="form-control" id="startdato" type="date"  th:field="${child.startDato}"/>
         </div>
 
         <div class="form-group">
-        <label>Ændre noter</label> <br>
-        <textarea style= "height: 150px; width: 400px"  th:field="${child.noter}"/>
+            <label for="noter">Ændre noter</label>
+            <textarea class="form-control" id="noter" style= "height: 150px; width: 500px"  th:field="${child.noter}"/>
         </div>
 
         <div class="form-group">
@@ -78,16 +66,12 @@
         </div>
 
     </form>
-
-
             </div>
         </div>
     </div>
 </div>
 
 
-
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
-
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class Child implements Serializable  {
+
+public static final long serialVersionUID = 1L;
 
     private int id;
     private String forNavn;
@@ -28,11 +30,6 @@ public class Child implements Serializable  {
         this.cpr = cpr;
         this.startDato = startDato;
         this.noter = noter;
-    }
-
-    @Override
-    public String toString() {
-        return "navn" + forNavn;
     }
 
 
